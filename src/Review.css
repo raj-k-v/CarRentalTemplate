@@ -1,0 +1,24 @@
+/* Track holds all slides (duplicated = 200% width) */
+.testimonial-track {
+  display: flex;
+  width: 100%;
+  animation: slideLoop 5s linear infinite;
+}
+
+.testimonial-track > div {
+  flex: 0 0 33.333%;
+}
+
+@keyframes slideLoop {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Pause slider on hover */
+.testimonial-track:hover {
+  animation-play-state: paused;
+}
