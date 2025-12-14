@@ -1,6 +1,7 @@
 import './MainText.css';
-import Navbar from './Navbar';
+
 import Review from './Review.jsx';
+import BookingInteractive from './BookingInteractive.jsx';
 
 function MainText() {
     return (
@@ -69,6 +70,7 @@ function MainText() {
 
                 <Review />
             </div>
+    <BookingInteractive />
 
 
         </>

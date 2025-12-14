@@ -10,13 +10,11 @@ export default function LoginPage() {
     e.preventDefault();
     setError("");
 
-    // basic validation
+    // basic validation used .trim to remove space 
     if (!email.trim() || !password) {
       setError("Please enter both email and password.");
-      return;
+      
     }
-
-    // fake login action
     alert(`Logged in as ${email}`);
   };
 

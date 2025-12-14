@@ -1,6 +1,8 @@
 import './Navbar.css'
 import { useState } from 'react';
 
+import {Link,NavLink} from 'react-router-dom';
+
 function Navbar() {
     // change nav color when scrolling
     const [navBackground, setNavBackground] = useState(false);
@@ -22,7 +24,7 @@ function Navbar() {
                     <nav className="px-2 w-full flex items-center justify-between">
 
                         {/* Logo */}
-                        <div
+                       <Link to="/" ><div
                             className={`
                                 text-[#edaa3e] font-extrabold text-3xl transition-all duration-400 
                                 font-stretch-70% group p-2 hover:scale-90 tracking-widest cursor-pointer
@@ -31,34 +33,37 @@ function Navbar() {
                             <span className="transition duration-300 group-hover:text-white">R</span>
                             <span className="text-white">entR</span>
                             <span className="transition duration-300 group-hover:text-white">ide</span>
-                        </div>
+                        </div></Link> 
 
                         {/* Menu */}
                         <ul className="md:flex hidden gap-1 text-white">
-                            <li className="transition duration-300 hover:cursor-pointer hover:text-white rounded-xl py-2 px-3 text-[#edaa3e] hover:scale-95">
-                                Home
+                            <li className="transition duration-300 hover:cursor-pointer rounded-xl py-2 px-3 hover:scale-95">
+                                <NavLink to="/" className={({isActive})=>`${isActive ? "text-[#edaa3e]":"text-white" }`}>Home</NavLink>
                             </li>
-                            <a href="#end"><li className="transition duration-300 hover:cursor-pointer hover:text-[#edaa3e] rounded-xl py-2 px-3 hover:scale-95">
+
+
+                            {/* {use useEffect hook to scroll to the bottom of the page on aboutUs and Contact page navigation} */}
+                            <NavLink to="/aboutUs" className={({isActive})=>`${isActive ? "text-[#edaa3e]":"" }`}><li className="transition duration-300 hover:cursor-pointer hover:text-[#edaa3e] rounded-xl py-2 px-3 hover:scale-95">
                                 About us
-                            </li></a>
-                            <a href="#end"><li className="transition duration-300 hover:cursor-pointer hover:text-[#edaa3e] rounded-xl py-2 px-3 hover:scale-95">
+                            </li></NavLink>
+                            <NavLink to="/contact" className={({isActive})=>`${isActive ? "text-[#edaa3e]":"" }`}><li className="transition duration-300 hover:cursor-pointer hover:text-[#edaa3e] rounded-xl py-2 px-3 hover:scale-95">
                                 Contact
-                            </li></a>
-                            <li className="transition duration-300 hover:cursor-pointer hover:text-[#edaa3e] rounded-xl py-2 px-3 hover:scale-95">
+                            </li></NavLink>
+
+                            {/* make a services page that shows all the services offered and the cars available currently */}
+                            <NavLink to="/services" className={({isActive})=>`${isActive ? "text-[#edaa3e]":"" }`}><li className="transition duration-300 hover:cursor-pointer hover:text-[#edaa3e] rounded-xl py-2 px-3 hover:scale-95">
                                 Services
-                            </li>
+                            </li></NavLink>
 
-                            <a href=""><div
+                            <NavLink to="/login" className={({isActive})=>`${isActive ? " text-[#edaa3e]":" text-white" }`}><div
                                 className={`
-
-                                    hidden md:block text-white transition duration-300 
+                                    hidden md:block transition duration-300 
                                     rounded-3xl cursor-pointer hover:border px-4 py-2 
                                     border-white border hover:border-[#f5b754] 
-                                    hover:text-black hover:bg-[#f5b754]
+                                    hover:text-black hover:bg-[#f5b754] group
                                 `}
-                            >
-                                <div >Login / Signup</div>
-                            </div></a>
+                            >Login / Signup
+                            </div></NavLink>
                         </ul>
 
                         {/* Mobile Menu Icon */}
@@ -71,21 +76,29 @@ function Navbar() {
             {/* On scroll bar */}
             <div className={` glass-nav transition duration-500 ${navBackground ? "opacity-100 translate-y-0" :"-translate-y-full opacity-0" }`}>
                 <ul className="md:flex bg-[rgba(44,37,37,0.12)] backdrop-blur-[7px] px-4 py-2 rounded-full hidden gap-5 text-white">
-                    <li className="transition duration-300 hover:cursor-pointer hover:text-white rounded-xl py-2 px-3 text-[#edaa3e] hover:scale-95">
-                        Home
+                    <li className="transition duration-300 hover:cursor-pointer hover:text-white rounded-xl py-2 px-3  hover:scale-95">
+                                
+                                <NavLink to="/" className={({isActive})=>`${isActive ? "text-[#edaa3e]":"" }`}>Home</NavLink>
+                        
                     </li>
 
                     <li className="transition duration-300 hover:cursor-pointer hover:text-[#edaa3e] rounded-xl py-2 px-3 hover:scale-95">
-                        About us
+                                
+                                <NavLink to="/aboutUs" className={({isActive})=>`${isActive ? "text-[#edaa3e]":"" }`}>About us</NavLink>
                     </li>
 
                     <li className="transition duration-300 hover:cursor-pointer hover:text-[#edaa3e] rounded-xl py-2 px-3 hover:scale-95">
-                        Contact
+                                
+                                <NavLink to="/contact" className={({isActive})=>`${isActive ? "text-[#edaa3e]":"" }`}>Contact</NavLink>
+                        
                     </li>
 
                     <li className="transition duration-300 hover:cursor-pointer hover:text-[#edaa3e] rounded-xl py-2 px-3 hover:scale-95">
-                        Services
+                                
+                                <NavLink to="/services" className={({isActive})=>`${isActive ? "text-[#edaa3e]":"" }`}>Services</NavLink>
+                        
                     </li>
+                    {/* create a custom dropdown for listings */}
                     <li className="group  transition duration-300 hover:cursor-pointer hover:text-[#edaa3e] rounded-xl py-2 px-3 hover:scale-95">
                         Listings&nbsp;&nbsp;
                         <span className='inline-block duration-500 group-hover:-rotate-180 text-[15px]'>&#x25BC;</span>
